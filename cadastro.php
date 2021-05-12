@@ -20,7 +20,7 @@ if(isset($_POST['cad'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="imagens/4ATech1.ico" type="image/x-icon" />
+  <link rel="icon" href="imagens/Logo_4ATech.png" type="image/x-icon" />
   <title>Cadastro 4ATech</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -36,7 +36,7 @@ if(isset($_POST['cad'])){
 <div class="register-box">
   <div class="register-logo">
     <a href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/index2.html">
-		  <img src="imagens/4ATech1.png" alt="4ATech" width="150px">
+		  <img src="imagens/Logo_4ATech.png" alt="4ATech" width="150px">
 	  </a>
   </div>
 
@@ -78,7 +78,7 @@ if(isset($_POST['cad'])){
           </div>
         </div>
           <div class="col-12 container">
-            <button type="submit" value="submit" name="cad" class="btn btn-warning btn-block">Cadastrar</button>
+            <button type="submit" value="submit" name="cad" class="btn btn-primary btn-block">Cadastrar</button>
           </div>
           <!-- /.col -->
         </div>

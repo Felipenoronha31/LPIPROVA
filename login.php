@@ -9,6 +9,7 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($qu)>0){
         $f= mysqli_fetch_assoc($qu);
         $_SESSION['id']=$f['id_cadastros'];
+        $_SESSION['perfil']=$f['nome_perfil'];
         header ('location:home.php');
     }
     else{
@@ -23,7 +24,7 @@ if(isset($_POST['login'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="imagens/4ATech1.ico" type="image/x-icon" />
+  <link rel="icon" href="imagens/Logo_4ATech.png" type="image/x-icon" />
   <title >Login 4ATECH</title>
 
  <!-- Google Font: Source Sans Pro -->
@@ -38,10 +39,10 @@ if(isset($_POST['login'])){
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
-  <div class="card card-outline card-warning">
+  <div class="card card-outline card-primary">
     <div class="card-header text-center">
     <a href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/index2.html">
-		  <img src="imagens/4ATech1.png" alt="4ATech" width="150px">
+		  <img src="imagens/Logo_4ATech.png" alt="4ATech" width="150px">
 	  </a>
     </div>
     <div class="card-body">
@@ -67,7 +68,7 @@ if(isset($_POST['login'])){
       
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" name="login" class="btn btn-warning btn-block ">Entrar</button>
+            <button type="submit" name="login" class="btn btn-primary btn-block ">Entrar</button>
           </div>
           <!-- /.col -->
         </div>

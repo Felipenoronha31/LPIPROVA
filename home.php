@@ -65,7 +65,7 @@ if(isset($_POST['sub'])){
 </head>
 
 <body>
-<div class="card card-info card-warning">
+<div class="card card-info card-primary">
               <div class="card-header">
                 <h3 class="card-title">Cadastro de Empresas</h3>
               </div>
@@ -96,14 +96,14 @@ if(isset($_POST['sub'])){
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" name="emp" class="btn btn-info btn-warning">Cadastrar</button>
+                  <button type="submit" name="emp" class="btn btn-info btn-primary">Cadastrar</button>
                 </div>
                 <!-- /.card-footer -->
               </form>
             </div>
             <!-- /.card -->
 
-            <div class="card card-info card-warning">
+            <div class="card card-info card-primary">
               <div class="card-header">
                 <h3 class="card-title">Cadastro de Veículos</h3>
               </div>
@@ -138,13 +138,13 @@ if(isset($_POST['sub'])){
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" name="vei" class="btn btn-info btn-warning">Cadastrar</button>
+                  <button type="submit" name="vei" class="btn btn-info btn-primary">Cadastrar</button>
                 </div>
                 <!-- /.card-footer -->
               </form>
             </div>
             <!-- /.card -->
-            <div class="card card-info card-warning">
+            <div class="card card-info card-primary">
               <div class="card-header">
                 <h3 class="card-title">Cadastro de Arquivos</h3>
               </div>
@@ -169,7 +169,7 @@ if(isset($_POST['sub'])){
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" name="sub" class="btn btn-info btn-warning">Cadastrar</button>
+                  <button type="submit" name="sub" class="btn btn-info btn-primary">Cadastrar</button>
                 </div>
                 <!-- /.card-footer -->
               </form>
@@ -178,8 +178,8 @@ if(isset($_POST['sub'])){
             
 </body>
 <div class="text-center">
-<a href="viewall.php"><button class="btn btn-info col-2 text-center btn-warning">Ver Dados</button></a>
-<a href="logout.php"><button class="btn btn-info col-2 text-center btn-warning">Logout</button></a>
+<a href="viewall.php"><button class="btn btn-info col-2 text-center btn-primary">Ver Dados</button></a>
+<a href="logout.php"><button class="btn btn-info col-2 text-center btn-primary">Logout</button></a>
 </div>
 
 <p>
