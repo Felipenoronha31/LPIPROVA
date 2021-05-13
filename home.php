@@ -1,45 +1,32 @@
 <?php
 include 'connect.php';
 include 'check.php';
-if(isset($_POST['emp'])){
-    $nome=$_POST['nome'];
-    $email=$_POST['email'];
-    $rep=$_POST['rep'];
 
-    $sql="insert into empresa (nome_empresa, email_empresa, representante_empresa) values ('$nome','$email', '$rep' )";
-    mysqli_query($con, $sql);
-}
+    $s="select * from empresa";
+    $qu= mysqli_query($con, $s);
+    $f=mysqli_fetch_assoc($qu);
 
-if(isset($_POST['vei'])){
-  $placa=$_POST['placa'];
-  $marca=$_POST['marca'];
-  $modelo=$_POST['modelo'];
-  $ano=$_POST['ano'];
+    $s="select * from cadastros";
+    $qu= mysqli_query($con, $s);
+    $f=mysqli_fetch_assoc($qu);
 
-  $sqlvei="insert into veiculo (placa_veiculo, nome_veiculo, marca_veiculo, ano_veiculo) values ('$placa','$modelo', '$marca', '$ano' )";
-  mysqli_query($con, $sqlvei);
-}
+    $s="select * from veiculo";
+    $qu= mysqli_query($con, $s);
+    $f=mysqli_fetch_assoc($qu);
 
-if(isset($_POST['sub'])){
-  $empresa=$_POST['empresa'];
-  if($_FILES['file']['name']){
-    move_uploaded_file($_FILES['file']['tmp_name'], "arquivo/".$_FILES['file']['name']);
-    $arq="arquivo/".$_FILES['file']['name'];
-    $sqlarq="insert into arquivo (empresa_arquivo, arquivo) values ('$empresa','$arq')";
-    mysqli_query($con, $sqlarq);
-  }
 
-}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="imagens/4ATech1.ico" type="image/x-icon"/>
-  <title>AdminLTE 3 | Advanced form elements</title>
+<!doctype html>
+<html lang="pt">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="imagens/Logo_4ATech.png" type="image/x-icon" />
 
-  <!-- Google Font: Source Sans Pro -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/fontawesome-free/css/all.min.css">
@@ -62,133 +49,149 @@ if(isset($_POST['sub'])){
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
-</head>
 
-<body>
-<div class="card card-info card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Cadastro de Empresas</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal" method="POST" enctype="multipart/form-data">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nome</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="nome" class="form-control" id="inputEmail3" placeholder="Insira o Nome da Empresa">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email corporativo</label>
-                    <div class="col-sm-10">
-                      <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Insira o Email">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Representante</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="rep" class="form-control" id="inputPassword3" placeholder="Insira o nome de um Representante">
-                    </div>
-                  </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" name="emp" class="btn btn-info btn-primary">Cadastrar</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
-            </div>
-            <!-- /.card -->
+    <title>4ATech</title>
+  </head>
+  <body>
 
-            <div class="card card-info card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Cadastro de Veículos</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal" method="POST" enctype="multipart/form-data">
-                <div class="card-body">
-                <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Placa</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="placa" class="form-control" id="inputPassword3" placeholder="Insira a Placa">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Marca</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="marca" class="form-control" id="inputEmail3" placeholder="Insira a marca">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Nome</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="modelo" class="form-control" id="inputPassword3" placeholder="Insira o nome">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Ano</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="ano" class="form-control" id="inputPassword3" placeholder="Insira o ano">
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" name="vei" class="btn btn-info btn-primary">Cadastrar</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
-            </div>
-            <!-- /.card -->
-            <div class="card card-info card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Cadastro de Arquivos</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal" method="POST" enctype="multipart/form-data">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Empresa</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="empresa" class="form-control" id="inputEmail3" placeholder="Insira a empresa">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" name="file" class="custom-file-input" id="customFileLang" lang="es">
-                      <label class="custom-file-label" for="customFileLang">Selecionar Arquivo</label>
-                    </div>
-                    </div> 
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" name="sub" class="btn btn-info btn-primary">Cadastrar</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
-            </div>
-            <!-- /.card -->
-            
-</body>
+  <?php
+    if($_SESSION['perfil']=="Admin"){
+        include "table_usuarios.php";
+    }
+?>
+  
+<h3 class="container text-center">Empresas</h3>
+<p>
+ <div class="container">
+  <table class="table table-striped table-bordered">
+   <tr class="bg-warning">
+        <th scope="col">
+                Id
+            </th>
+            <th scope="col">
+                Nome
+            </th>
+            <th scope="col">
+            Email
+            </th>
+            <th scope="col">
+            Representante
+            </th>
+            <th scope="col">
+             Editar
+            </th> 
+            <th scope="col">
+             Apagar
+            </th>
+        </th>
+
+   <tbody>
+
+    <?php
+        $sq="select * from empresa";
+        $qu=mysqli_query($con,$sq);
+        while($f=  mysqli_fetch_assoc($qu)){
+    ?>
+    <tr>
+    <td>
+            <?php echo $f['id_empresa']?>
+        </td>
+        <td>
+            <?php echo $f['nome_empresa']?>
+        </td>
+        <td>
+            <?php echo $f['email_empresa']?>
+        </td>
+        <td>
+            <?php echo $f['representante_empresa']?>
+        </td>
+        <td>
+            <a href="edit_empresa.php?id_empresa=<?php echo $f['id_empresa']?>">Editar</a>
+        </td>
+        <td>
+            <a href="delete_empresa.php?id_empresa=<?php echo $f['id_empresa']?>">Apagar</a>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+   </tbody>
+  </table>
+ </div>
+</p>
+<h3 class="container text-center">Veículos</h3>
+<p>
+ <div class="container">
+  <table class="table table-striped table-bordered">
+   <tr class="bg-warning">
+        <th scope="col">
+                Placa
+            </th>
+            <th scope="col">
+                Nome
+            </th>
+            <th scope="col">
+                Marca
+            </th>
+            <th scope="col">
+                Ano
+            </th>
+            <th scope="col">
+             Editar
+            </th> 
+            <th scope="col">
+             Apagar
+            </th>
+        </th>
+
+   <tbody>
+
+    <?php
+        $sq="select * from veiculo";
+        $qu=mysqli_query($con,$sq);
+        while($f=  mysqli_fetch_assoc($qu)){
+    ?>
+    <tr>
+    <td>
+            <?php echo $f['placa_veiculo']?>
+        </td>
+        <td>
+            <?php echo $f['nome_veiculo']?>
+        </td>
+        <td>
+            <?php echo $f['marca_veiculo']?>
+        </td>
+        <td>
+            <?php echo $f['ano_veiculo']?>
+        </td>
+        <td>
+            <a href="edit_veiculo.php?placa_veiculo=<?php echo $f['placa_veiculo']?>">Editar</a>
+        </td>
+        <td>
+            <a href="delete_veiculo.php?placa_veiculo=<?php echo $f['placa_veiculo']?>">Apagar</a>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+   </tbody>
+  </table>
+ </div>
+</p>
+
 <div class="text-center">
-<a href="viewall.php"><button class="btn btn-info col-2 text-center btn-primary">Ver Dados</button></a>
-<a href="logout.php"><button class="btn btn-info col-2 text-center btn-primary">Logout</button></a>
+<a href="forms.php"><button class="btn btn-info col-2 text-center btn-primary">Cadastrar</button></a>
+<a href="logout.php"><button class="btn btn-info col-2 text-center btn-primary">Sair</button></a>
 </div>
 
 <p>
-<?php
-include 'footer.php';
-?>
+ <?php
+ include 'footer.php';
+ ?>
 </p>
+
   <!-- jQuery -->
-<script src="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/jquery/jquery.min.js"></script>
+  <script src="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->
@@ -215,3 +218,5 @@ include 'footer.php';
 <!-- AdminLTE for demo purposes -->
 <script src="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/js/demo.js"></script>
 <!-- Page specific script -->
+  </body>
+</html>
