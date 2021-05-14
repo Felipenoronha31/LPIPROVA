@@ -3,7 +3,10 @@ include 'connect.php';
 if(isset($_POST['login'])){
     $email=$_POST['email'];
     $senha=$_POST['senha'];
-    $sql= "select * from cadastros where email_cadastros='$email' and senha_cadastros= '$senha'";   
+    $sql= "
+    select * from cadastros as c
+    INNER JOIN perfil as p on p.id_perfil = c.fk_idProfile 
+    where email_cadastros='$email' and senha_cadastros= '$senha'";   
     $qu= mysqli_query($con, $sql);
 
     if(mysqli_num_rows($qu)>0){

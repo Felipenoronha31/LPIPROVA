@@ -49,10 +49,13 @@ include 'check.php';
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>4ATech</title>
   </head>
   <body>
+  
+  <?php include "navbar.php";?>
 
   <?php
     if($_SESSION['perfil']=="Admin"){
@@ -64,7 +67,7 @@ include 'check.php';
 <p>
  <div class="container">
   <table class="table table-striped table-bordered">
-   <tr class="bg-warning">
+   <tr class="cor-tabela">
         <th scope="col">
                 Id
             </th>

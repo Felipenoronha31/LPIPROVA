@@ -7,7 +7,7 @@ if(isset($_POST['cad'])){
     $confirm=$_POST['confirm'];
     
     if($senha == $confirm){
-    $sql="insert into cadastros(nome_cadastros, email_cadastros, senha_cadastros)value('$usuario', '$email', '$senha')";
+    $sql="insert into cadastros(nome_cadastros, email_cadastros, senha_cadastros, fk_idProfile)value('$usuario', '$email', '$senha', 2)";
     mysqli_query($con, $sql);
     }else{
       echo "Senhas não são iguais";
