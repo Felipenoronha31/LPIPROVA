@@ -30,16 +30,20 @@
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Editar</title>
 </head>
 <body>
+<?php include "navbar.php";?>
 
 <h1> Editar Veículo </h1>
 
 
 <?php
+    session_start();
     include 'connect.php';
     include 'check.php';
+
 
     if(isset($_POST['update'])){
         $id=$_POST['id'];
@@ -50,10 +54,10 @@
 
         $sql="update veiculo set nome_veiculo='{$nome}', marca_veiculo='{$marca}', ano_veiculo='{$ano}' where placa_veiculo='{$id}'";
         mysqli_query($con, $sql);
-        header('location:viewall.php');
+        header('location:home.php');
     }
     if(isset($_POST['cancelar'])){
-        header('location:viewall.php');
+        header('location:home.php');
     }
 
     $id = $_GET['placa_veiculo'];

@@ -1,6 +1,9 @@
 <?php
+session_start();
 include 'connect.php';
 include 'check.php';
+include 'logging.php';
+
 
     $s="select * from empresa";
     $qu= mysqli_query($con, $s);
@@ -14,7 +17,7 @@ include 'check.php';
     $qu= mysqli_query($con, $s);
     $f=mysqli_fetch_assoc($qu);
 
-
+    logMsg( "Acessando página HOME" );
 ?>
 <!doctype html>
 <html lang="pt">
@@ -183,6 +186,7 @@ include 'check.php';
 </p>
 
 <div class="text-center">
+<a href="viewall_produtos.php"><button class="btn btn-info col-2 text-center btn-primary">Compras</button></a>
 <a href="forms.php"><button class="btn btn-info col-2 text-center btn-primary">Cadastrar</button></a>
 <a href="logout.php"><button class="btn btn-info col-2 text-center btn-primary">Sair</button></a>
 </div>

@@ -1,5 +1,8 @@
 <?php
+session_start();
 include 'connect.php';
+
+
 if(isset($_POST['login'])){
     $email=$_POST['email'];
     $senha=$_POST['senha'];
@@ -17,6 +20,7 @@ if(isset($_POST['login'])){
     }
     else{
         echo 'usuário ou senha não existe';
+        logMsg( "Isto é um aviso.... a operação X pode falhar...", 'warning' );
     } 
     
 }
@@ -38,8 +42,10 @@ if(isset($_POST['login'])){
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="hold-transition login-page">
+<?php include "navbar.php";?>
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">

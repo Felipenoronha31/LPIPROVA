@@ -31,8 +31,10 @@ if(isset($_POST['cad'])){
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="hold-transition register-page">
+<?php include "navbar.php";?>
 <div class="register-box">
   <div class="register-logo">
     <a href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/index2.html">

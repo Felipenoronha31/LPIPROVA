@@ -30,14 +30,17 @@
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Editar</title>
 </head>
 <body>
+<?php include "navbar.php";?>
 
 <h1> Editar Empresas </h1>
 
 
 <?php
+    session_start();
     include 'connect.php';
     include 'check.php';
 
@@ -50,10 +53,10 @@
 
         $sql="update empresa set nome_empresa='{$nome}', email_empresa='{$email}', representante_empresa='{$representante}' where id_empresa = {$id}";
         mysqli_query($con, $sql);
-        header('location:viewall.php');
+        header('location:home.php');
     }
     if(isset($_POST['cancelar'])){
-        header('location:viewall.php');
+        header('location:home.php');
     }
 
     $id = $_GET['id_empresa'];

@@ -30,14 +30,17 @@
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Editar</title>
 </head>
 <body>
+<?php include "navbar.php";?>
 
 <h1> Editar Cadastros </h1>
 
 
 <?php
+    session_start();
     include 'connect.php';
     include 'check.php';
 
@@ -45,20 +48,26 @@
         $id=$_POST['id'];
         $nome=$_POST['nome'];
         $email=$_POST['email'];
+        $perfil=$_POST['idperfil'];
 
 
-        $sql="update cadastros set nome_cadastros='{$nome}', email_cadastros='{$email}' where id_cadastros = {$id}";
+        $sql="
+        update cadastros set nome_cadastros='{$nome}', email_cadastros='{$email}', fk_idProfile='{$perfil}' where id_cadastros = {$id},
+        ";
         mysqli_query($con, $sql);
-        header('location:viewall.php');
+        header('location:home.php');
     }
     if(isset($_POST['cancelar'])){
-        header('location:viewall.php');
+        header('location:home.php');
     }
 
     $id = $_GET['id_cadastros'];
 
 
-    $sql="select*from cadastros where id_cadastros={$id}";
+    $sql= "
+            select * from cadastros as c
+                    INNER JOIN perfil as p on p.id_perfil = c.fk_idProfile 
+            ";
     $query= mysqli_query($con, $sql);
     $result=mysqli_fetch_assoc($query);
 ?>
@@ -82,6 +91,12 @@
                             Email:
                             <input type="text" name="email" value="<?php echo $result['email_cadastros']?>">
                         </td>
+                    </tr>
+                    <tr>
+                    <td>
+                        Id Perfil:
+                        <input  type="text"  name="idperfil" value="<?php echo $result['id_perfil']?>">
+                    </td>
                     </tr>
                     <tr>
                     <div class="card-footer">

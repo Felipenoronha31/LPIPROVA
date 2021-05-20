@@ -30,15 +30,18 @@
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <title>Apagar</title>
 </head>
 <body>
+<?php include "navbar.php";?>
 
 <h1> Delete Empresa </h1>
 
 
 <?php
+    session_start();
     include 'connect.php';
     include 'check.php';
 

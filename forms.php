@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php';
 include 'check.php';
 if(isset($_POST['emp'])){
@@ -62,9 +63,14 @@ if(isset($_POST['sub'])){
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body>
+<?php include "navbar.php";?>
+
+
 <div class="card card-info card-primary">
               <div class="card-header">
                 <h3 class="card-title">Cadastro de Empresas</h3>
