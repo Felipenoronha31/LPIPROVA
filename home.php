@@ -188,6 +188,12 @@ include 'logging.php';
 <div class="text-center">
 <a href="viewall_produtos.php"><button class="btn btn-info col-2 text-center btn-primary">Compras</button></a>
 <a href="forms.php"><button class="btn btn-info col-2 text-center btn-primary">Cadastrar</button></a>
+<?php
+    if($_SESSION['perfil']=="Admin"){
+        include "btn_loggings.php";
+    }
+?>
+
 <a href="logout.php"><button class="btn btn-info col-2 text-center btn-primary">Sair</button></a>
 </div>
 

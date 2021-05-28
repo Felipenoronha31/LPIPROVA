@@ -53,13 +53,13 @@
 
         $sql="delete from veiculo where placa_veiculo = '{$id}'";
         mysqli_query($con, $sql);
-        header('location:viewall.php');
+        header('location:home.php');
         logMsg( "Veículo deletado" );
     }
 
 
     if(isset($_POST['notdelete'])){
-        header('location:viewall.php');
+        header('location:home.php');
     }
 
 

@@ -1,9 +1,20 @@
-<html>
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
+<?php
+session_start();
+include 'connect.php';
+include 'check.php';
+include 'check_adm.php';
+include 'logging.php';
+
+
+    logMsg( "Acessando página de LOGGINGS" );
+?>
+<!doctype html>
+<html lang="pt">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="imagens/4ATech1.ico" type="image/x-icon" />
+    <link rel="icon" href="imagens/Logo_4ATech.png" type="image/x-icon" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -32,69 +43,61 @@
   <link rel="stylesheet" href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/css/adminlte.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 
-  <title>Apagar</title>
-</head>
-<body>
-<?php include "navbar.php";?>
+    <title>4ATech</title>
+  </head>
+  <body>
+  
+  <?php include "navbar.php";?>
 
-<h1> Delete Empresa </h1>
+<h3 class="container text-center">Loggings</h3>
+<p>
+ <div class="container">
+  <table class="table table-striped table-bordered">
+   <tr class="cor-tabela">
+            <th scope="col">
+                Data 
+            </th>
+            <th scope="col">
+            Nível
+            </th>
+            <th scope="col">
+            Mensagem
+            </th>
+        </th>
 
+   <tbody>
 
-<?php
-    session_start();
-    include 'connect.php';
-    include 'check.php';
-    include 'logging.php';
-    logMsg( "Acessando a página DELETE EMPRESAS" );
-
-    if(isset($_POST['delete'])){
-        $id=$_POST['id'];
-
-
-        $sql="delete from empresa where id_empresa = {$id}";
-        mysqli_query($con, $sql);
-        header('location:home.php');
-        logMsg( "Empresa deletada" );
+    <?php
+        $sq="select * from logging";
+        $qu=mysqli_query($con,$sq);
+        while($f=  mysqli_fetch_assoc($qu)){
+    ?>
+    <tr>
+    <td>
+            <?php echo $f['dateLogging']?>
+        </td>
+        <td>
+            <?php echo $f['level']?>
+        </td>
+        <td>
+            <?php echo $f['msg']?>
+        </td>
+    </tr>
+    <?php
     }
+    ?>
+   </tbody>
+  </table>
+ </div>
+</p>
 
 
-    if(isset($_POST['notdelete'])){
-        header('location:home.php');
-    }
+<div class="text-center">
+<a href="Home.php"><button class="btn btn-info col-2 text-center btn-primary">Voltar</button></a>
+<a href="logout.php"><button class="btn btn-info col-2 text-center btn-primary">Sair</button></a>
+</div>
 
-
-    $id = $_GET['id_empresa'];
-    $sqlproduto= "select*from empresa where id_empresa={$id}";
-    $query= mysqli_query($con, $sqlproduto);
-    $result=mysqli_fetch_assoc($query);
-?>
-    
-    <form method="POST" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <td>
-                             Id 
-                            <input readonly="readonly" type="text"  name="id" value="<?php echo $result['id_empresa']?>">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Deseja excluir o cadastro <?php echo $result['nome_empresa']?> ?
-                        </td>
-                    </tr>
-                    <tr>
-                    <div class="card-footer">
-                    <td>   
-                        <button type="submit" value="Apagar" name="delete" class="btn btn-info col-4 btn-warning">Apagar</button>          
-                        <button type="submit" value="Não Apagar" name="notdelete" class="btn btn-info col-4 btn-warning">Cancelar</button>
-                    </td>
-                    </div>
-                  
-                </tr>
-                </table>    
-    </form>
-
-    <p>
+<p>
  <?php
  include 'footer.php';
  ?>
@@ -128,5 +131,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/dist/js/demo.js"></script>
 <!-- Page specific script -->
-</body>
+  </body>
 </html>

@@ -47,7 +47,6 @@
     include 'logging.php';
     logMsg( "Acessando a página DELETE CADASTROS" );
 
-    session_start()
 
     if(isset($_POST['delete'])){
         $id=$_POST['id'];
@@ -55,13 +54,13 @@
 
         $sql="delete from cadastros where id_cadastros = {$id}";
         mysqli_query($con, $sql);
-        header('location:viewall.php');
+        header('location:home.php');
         logMsg( "Cadastro deletado" );
     }
 
 
     if(isset($_POST['notdelete'])){
-        header('location:viewall.php');
+        header('location:home.php');
     }
 
 
