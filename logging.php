@@ -43,10 +43,11 @@ function logMsg( $msg, $level = 'info', $file = 'main.log' )
     include 'connect.php';
 
     $idlogging = $_SESSION['id']; 
+    //$idlogging = 2; 
 
     $sqlinsertlogging="insert into logging (dateLogging, level, msg, fk_reg) values ('$date' , '$levelStr', '$msg', '$idlogging')";
  
-    //$sqlinsertlogging="insert into logging (dateLogging, level, msg, fk_reg) values ('2021-04-29 11:39:42' , 'INFO', 'Teste DB', 3)";
+    //$sqlinsertlogging="insert into logging (dateLogging, level, msg, fk_reg) values ('2021-04-29 11:39:42' , 'INFO', 'Teste DB', 2)";
     mysqli_query($con, $sqlinsertlogging);
 
     //CREATE table logging (

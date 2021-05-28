@@ -43,7 +43,8 @@
     session_start();
     include 'connect.php';
     include 'check.php';
-
+    include 'logging.php';
+    logMsg( "Acessando a página EDIT VEÍCULOS" );
 
     if(isset($_POST['update'])){
         $id=$_POST['id'];

@@ -44,6 +44,8 @@
     session_start();
     include 'connect.php';
     include 'check.php';
+    include 'logging.php';
+    logMsg( "Acessando a página DELETE CADASTROS" );
 
     session_start()
 
@@ -54,6 +56,7 @@
         $sql="delete from cadastros where id_cadastros = {$id}";
         mysqli_query($con, $sql);
         header('location:viewall.php');
+        logMsg( "Cadastro deletado" );
     }
 
 

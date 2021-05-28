@@ -39,8 +39,8 @@
     session_start();
     include 'connect.php';
     include 'check.php';
-
-
+    include 'logging.php';
+    logMsg( "Acessando a página Compras" );
 
     if(isset($_POST['addShoppingCart'])){
     
@@ -184,7 +184,8 @@ while($compra_produto= mysqli_fetch_assoc($qu)){
 <br>
 
 <div class="text-center">
-<p><a href="home.php"><button class="btn btn-info col-2 text-center btn-primary">Voltar</button></a></p>
+<a href="home.php"><button class="btn btn-info col-2 text-center btn-primary">Voltar</button></a>
+<a href="logout.php"><button class="btn btn-info col-2 text-center btn-primary">Sair</button></a>
 </div>
 
 <p>

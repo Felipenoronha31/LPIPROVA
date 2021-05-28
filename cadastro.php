@@ -1,10 +1,12 @@
 <?php
 include 'connect.php';
+
 if(isset($_POST['cad'])){
     $usuario=$_POST['user'];
     $email=$_POST['email'];
     $senha=$_POST['pass'];
     $confirm=$_POST['confirm'];
+
     
     if($senha == $confirm){
     $sql="insert into cadastros(nome_cadastros, email_cadastros, senha_cadastros, fk_idProfile)value('$usuario', '$email', '$senha', 2)";
@@ -34,7 +36,6 @@ if(isset($_POST['cad'])){
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="hold-transition register-page">
-<?php include "navbar.php";?>
 <div class="register-box">
   <div class="register-logo">
     <a href="../AdminLTE-3.1.0-rc/AdminLTE-3.1.0-rc/index2.html">

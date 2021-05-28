@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'connect.php';
-
+include 'logging.php';
 
 if(isset($_POST['login'])){
     $email=$_POST['email'];
@@ -11,16 +11,18 @@ if(isset($_POST['login'])){
     INNER JOIN perfil as p on p.id_perfil = c.fk_idProfile 
     where email_cadastros='$email' and senha_cadastros= '$senha'";   
     $qu= mysqli_query($con, $sql);
+    
+
 
     if(mysqli_num_rows($qu)>0){
         $f= mysqli_fetch_assoc($qu);
         $_SESSION['id']=$f['id_cadastros'];
         $_SESSION['perfil']=$f['nome_perfil'];
         header ('location:home.php');
+        logMsg( "Login Efetuado" );
     }
     else{
         echo 'usuário ou senha não existe';
-        logMsg( "Isto é um aviso.... a operação X pode falhar...", 'warning' );
     } 
     
 }
@@ -45,7 +47,6 @@ if(isset($_POST['login'])){
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="hold-transition login-page">
-<?php include "navbar.php";?>
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">

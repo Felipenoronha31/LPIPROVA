@@ -44,6 +44,8 @@
     session_start();
     include 'connect.php';
     include 'check.php';
+    include 'logging.php';
+    logMsg( "Acessando a página DELETE VEÍCULOS" );
 
     if(isset($_POST['delete'])){
         $id=$_POST['id'];
@@ -52,6 +54,7 @@
         $sql="delete from veiculo where placa_veiculo = '{$id}'";
         mysqli_query($con, $sql);
         header('location:viewall.php');
+        logMsg( "Veículo deletado" );
     }
 
 

@@ -2,6 +2,8 @@
 session_start();
 include 'connect.php';
 include 'check.php';
+include 'logging.php';
+logMsg( "Acessando página FORMS" );
 if(isset($_POST['emp'])){
     $nome=$_POST['nome'];
     $email=$_POST['email'];
@@ -9,6 +11,7 @@ if(isset($_POST['emp'])){
 
     $sql="insert into empresa (nome_empresa, email_empresa, representante_empresa) values ('$nome','$email', '$rep' )";
     mysqli_query($con, $sql);
+    logMsg( "Empresa Cadastrada" );
 }
 
 if(isset($_POST['vei'])){
@@ -19,6 +22,7 @@ if(isset($_POST['vei'])){
 
   $sqlvei="insert into veiculo (placa_veiculo, nome_veiculo, marca_veiculo, ano_veiculo) values ('$placa','$modelo', '$marca', '$ano' )";
   mysqli_query($con, $sqlvei);
+  logMsg( "Veículo cadastrado" );
 }
 
 if(isset($_POST['sub'])){
@@ -28,6 +32,7 @@ if(isset($_POST['sub'])){
     $arq="arquivo/".$_FILES['file']['name'];
     $sqlarq="insert into arquivo (empresa_arquivo, arquivo) values ('$empresa','$arq')";
     mysqli_query($con, $sqlarq);
+    logMsg( "Arquivo Cadastrado" );
   }
 
 }
